@@ -3,5 +3,6 @@
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
     "description": "Short project description",
     "org": "genomicmedlab",
-    "repo": "{{ cookiecutter.project_slug }}"
+    "repo": "{{ cookiecutter.project_slug }}",
+    "add_docs": false
 }
