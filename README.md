@@ -9,11 +9,11 @@ git clone https://github.com/genomicmedlab/software-templates
 cd software-templates
 python3 -m virtualenv venv
 source venv/bin/activate
-python3 -m pip install "cookiecutter>=2.5.0"
+python3 -m pip install -r requirements.txt
 ```
 
 Choose a template (eg `python/`) and an output directory (eg `~/projects`) and run `cookiecutter`:
 
 ```shell
-python3 -m cookiecutter -o ~/code/ python/
+python3 -m cookiecutter -o ~/projects/ python/
 ```

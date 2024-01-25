@@ -1,0 +1,18 @@
+name: checks
+on: [push, pull_request]
+jobs:
+  test_python:
+    name: test python
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install -r requirements.txt
+
+      - name: Attempt build
+        run: python3 -m cookiecutter --no-input python/
