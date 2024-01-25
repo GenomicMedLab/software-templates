@@ -1,7 +1,11 @@
 [project]
 name = "{{ cookiecutter.project_slug }}"
 authors = [
-    {name = "Alex Wagner"},
+    {% if cookiecutter.your_name %}
+    {name = "{{ cookiecutter.your_name }}", {% if cookiecutter.your_email %}email = "{{ cookiecutter.your_email }}"{% endif %}},
+    {% else %}
+    {name = "Wagner Lab"},
+    {% endif %}
 ]
 readme = "README.md"
 classifiers = [
@@ -25,6 +29,18 @@ dependencies = []
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov"]
 dev = ["pre-commit", "ruff>=0.1.14"]
+{% if cookiecutter.add_docs %}
+docs = [
+    "sphinx==6.1.3",
+    "sphinx-autodoc-typehints==1.22.0",
+    "sphinx-autobuild==2021.3.14",
+    "sphinx-copybutton==0.5.2",
+    "sphinxext-opengraph==0.8.2",
+    "furo==2023.3.27",
+    "gravis==0.1.0",
+    "sphinx-github-changelog==1.2.1"
+]
+{% endif %}
 
 [project.urls]
 Homepage = "https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}"
@@ -51,6 +67,7 @@ branch = true
 
 [tool.ruff]
 src = ["src"]
+{% if add_docs %}exclude = ["docs/source/conf.py"]{% endif %}
 select = [
     "F",  # https://docs.astral.sh/ruff/rules/#pyflakes-f
     "E", "W",  # https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
@@ -77,8 +94,6 @@ select = [
     "SIM",  # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
     "PTH",  # https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
     "PGH",  # https://docs.astral.sh/ruff/rules/#pygrep-hooks-pgh
-    "FURB",  # https://docs.astral.sh/ruff/rules/#refurb-furb
-    "LOG",  # https://docs.astral.sh/ruff/rules/#flake8-logging-log
     "RUF",  # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
 ]
 fixable = [
@@ -94,8 +109,6 @@ fixable = [
     "PT",
     "RSE",
     "SIM",
-    "FURB",
-    "LOG",
     "RUF"
 ]
 

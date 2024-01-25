@@ -2,7 +2,7 @@ name: checks
 on: [push, pull_request]
 jobs:
   test:
-    name: test py${{ matrix.python-version }}
+    name: {{ "test py${{ matrix.python-version }}" }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,7 +22,7 @@ jobs:
       - name: Run tests
         run: python3 -m pytest
   lint:
-    name: lint py${{ matrix.python-version }}
+    name: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -30,10 +30,30 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.12"
+          python-version: "3.11"
 
       - name: Install dependencies
         run: python3 -m pip install ".[dev]"
 
       - name: Check style
         run: python3 -m ruff check . && python3 -m ruff format --check .
+  docs:
+    runs-on: ubuntu-latest
+    env:
+      SPHINX_GITHUB_CHANGELOG_TOKEN: {{ "${{ secrets.SPHINX_GITHUB_CHANGELOG_TOKEN }}" }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install '.[docs]'
+
+      - name: Attempt docs build
+        working-directory: ./docs
+        run: make html

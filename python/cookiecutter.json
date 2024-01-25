@@ -4,5 +4,7 @@
     "description": "Short project description",
     "org": "genomicmedlab",
     "repo": "{{ cookiecutter.project_slug }}",
-    "add_docs": false
+    "your_name": "",
+    "your_email": "",
+    "add_docs": [false, true]
 }

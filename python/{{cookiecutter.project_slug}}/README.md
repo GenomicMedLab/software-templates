@@ -1,12 +1,13 @@
 # {{ cookiecutter.project_name }}
 
-[![image](https://img.shields.io/pypi/v/{{ cookiecutter.repo }}.svg)](https://pypi.python.org/pypi/{{ cookiecutter.repo }})
-[![image](https://img.shields.io/pypi/l/{{ cookiecutter.repo }}.svg)](https://pypi.python.org/pypi/{{ cookiecutter.repo }})
-[![image](https://img.shields.io/pypi/pyversions/{{ cookiecutter.repo }}.svg)](https://pypi.python.org/pypi/{{ cookiecutter.repo }})
-[![Actions status](https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}/workflows/CI/badge.svg)](https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}/actions)
-![{{ cookiecutter.project_slug }}](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/{{ cookiecutter.project_slug }}/main/assets/badge/v2.json)
+[![image](https://img.shields.io/pypi/v/{{ cookiecutter.project_slug }}.svg)](https://pypi.python.org/pypi/{{ cookiecutter.project_slug }})
+[![image](https://img.shields.io/pypi/l/{{ cookiecutter.project_slug }}.svg)](https://pypi.python.org/pypi/{{ cookiecutter.project_slug }})
+[![image](https://img.shields.io/pypi/pyversions/{{ cookiecutter.project_slug }}.svg)](https://pypi.python.org/pypi/{{ cookiecutter.project_slug }})
+[![Actions status](https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.project_slug }}/workflows/CI/badge.svg)](https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.project_slug }}/actions)
 
+<!-- description -->
 {{ cookiecutter.description }}
+<!-- /description -->
 
 ## Installation
 
