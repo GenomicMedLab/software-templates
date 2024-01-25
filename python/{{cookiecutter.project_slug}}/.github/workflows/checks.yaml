@@ -37,6 +37,7 @@ jobs:
 
       - name: Check style
         run: python3 -m ruff check . && python3 -m ruff format --check .
+{% if cookiecutter.add_docs %}
   docs:
     runs-on: ubuntu-latest
     env:
@@ -57,3 +58,4 @@ jobs:
       - name: Attempt docs build
         working-directory: ./docs
         run: make html
+{% endif %}
