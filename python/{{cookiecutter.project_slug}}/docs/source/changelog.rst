@@ -2,6 +2,6 @@ Changelog
 ---------
 
 .. changelog::
-    :changelog-url: https://coolseqtool.readthedocs.io/en/stable/#changelog
-    :github: https://github.com/genomicmedlab/cool-seq-tool/releases/
-    :pypi: https://pypi.org/project/cool-seq-tool/
+    :changelog-url: https://{{ cookiecutter.project_slug }}.readthedocs.io/en/stable/#changelog
+    :github: https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}/releases/
+    :pypi: https://pypi.org/project/{{ cookiecutter.slug }}/
