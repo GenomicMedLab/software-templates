@@ -2,7 +2,7 @@
 name = "{{ cookiecutter.project_slug }}"
 authors = [
     {% if cookiecutter.your_name %}
-    {name = "{{ cookiecutter.your_name }}", {% if cookiecutter.your_email %}email = "{{ cookiecutter.your_email }}"{% endif %}},
+    {name = "{{ cookiecutter.your_name }}"{% if cookiecutter.your_email %}, email = "{{ cookiecutter.your_email }}"{% endif %}},
     {% else %}
     {name = "Wagner Lab"},
     {% endif %}
