@@ -1,11 +1,7 @@
 [project]
 name = "{{ cookiecutter.project_slug }}"
 authors = [
-    {% if cookiecutter.your_name %}
-    {name = "{{ cookiecutter.your_name }}"{% if cookiecutter.your_email %}, email = "{{ cookiecutter.your_email }}"{% endif %}},
-    {% else %}
-    {name = "Wagner Lab"},
-    {% endif %}
+    {% if cookiecutter.your_name %}{name = "{{ cookiecutter.your_name }}"{% if cookiecutter.your_email %}, email = "{{ cookiecutter.your_email }}"{% endif %}}{% else %}{name = "Wagner Lab"}{% endif %},
 ]
 readme = "README.md"
 classifiers = [
@@ -28,7 +24,7 @@ dependencies = []
 dynamic = ["version"]
 
 [project.optional-dependencies]
-test = ["pytest", "pytest-cov"]
+tests = ["pytest", "pytest-cov"]
 dev = ["pre-commit", "ruff>=0.1.14"]
 {% if cookiecutter.add_docs %}
 docs = [
