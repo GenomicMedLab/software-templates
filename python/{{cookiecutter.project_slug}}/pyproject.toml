@@ -135,4 +135,5 @@ ignore = [
 # ANN001 - missing-type-function-argument
 # ANN102 - missing-type-cls
 # ANN2 - missing-return-type
-"tests/*" = ["ANN001", "ANN102", "ANN2"]
+# S101 - assert
+"tests/*" = ["ANN001", "ANN102", "ANN2", "S101"]
