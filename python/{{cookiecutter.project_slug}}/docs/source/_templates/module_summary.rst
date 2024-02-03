@@ -1,6 +1,6 @@
-{{ fullname | underline }}
+{{ "{{ fullname | underline }}" }}
 
-.. automodule:: {{ fullname }}
+.. automodule:: {{ "{{ fullname }}" }}
    :members:
    :undoc-members:
    :special-members: __init__
