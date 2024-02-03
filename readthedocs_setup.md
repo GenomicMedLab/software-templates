@@ -23,3 +23,5 @@
     * Custom match: a pattern for a dev release
     * Version type: `Tag`
     * Action: `Activate version`
+
+Also make sure to add other lab members, and especially Alex, as collaborators.
