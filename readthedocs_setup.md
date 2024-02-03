@@ -1,5 +1,7 @@
 # readthedocs setup notes
 
+> I am not 100% on the best way to set up automation rules for us. For many of our repos, it might be better just to set a single rule that catches every new GitHub release and sets it as default.
+
 * Settings
   * Programming Language: `Python`
 * Advanced Settings
