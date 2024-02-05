@@ -1,3 +1,5 @@
+.. _contributing:
+
 Contributing
 ============
 
@@ -46,7 +48,7 @@ Tests are executed with `pytest <https://docs.pytest.org/en/7.1.x/getting-starte
 Documentation
 -------------
 
-The documentation is built with Sphinx, which is included as part of the ``docs`` dependency group. Navigate to the `docs/` subdirectory and use `make` to build the HTML version: ::
+The documentation is built with Sphinx, which is included as part of the ``docs`` dependency group. Navigate to the ``docs/`` subdirectory and use ``make`` to build the HTML version: ::
 
     cd docs
     make html

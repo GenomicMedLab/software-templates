@@ -19,6 +19,7 @@ extensions = [
     "sphinx_autodoc_typehints",
     "sphinx.ext.linkcode",
     "sphinx_copybutton",
+    "sphinx.ext.autosummary",
     "sphinx_github_changelog",
 ]
 
@@ -52,10 +53,10 @@ html_theme_options = {
     ],
 }
 # -- autodoc things ----------------------------------------------------------
-import os  # noqa: E402
-import sys  # noqa: E402
+import os
+import sys
 
-sys.path.insert(0, os.path.abspath("../../{{ cookiecutter.project_slug }}"))
+sys.path.insert(0, os.path.abspath("../../"))
 autodoc_preserve_defaults = True
 
 # -- get version -------------------------------------------------------------
@@ -70,7 +71,7 @@ def linkcode_resolve(domain, info):
     if not info["module"]:
         return None
     filename = info["module"].replace(".", "/")
-    return f"https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}/blob/main/{filename}.py"
+    return f"https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}/blob/main/src/{filename}.py"
 
 
 # -- code block style --------------------------------------------------------

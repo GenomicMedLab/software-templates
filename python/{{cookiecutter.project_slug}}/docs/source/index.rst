@@ -23,6 +23,8 @@
    :maxdepth: 2
 
     Installation<install>
+    Usage<usage>
+    API Reference<reference/index>
     Changelog<changelog>
     Contributing<contributing>
     License<license>
