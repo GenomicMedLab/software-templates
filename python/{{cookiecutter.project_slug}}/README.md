@@ -3,7 +3,7 @@
 [![image](https://img.shields.io/pypi/v/{{ cookiecutter.project_slug }}.svg)](https://pypi.python.org/pypi/{{ cookiecutter.project_slug }})
 [![image](https://img.shields.io/pypi/l/{{ cookiecutter.project_slug }}.svg)](https://pypi.python.org/pypi/{{ cookiecutter.project_slug }})
 [![image](https://img.shields.io/pypi/pyversions/{{ cookiecutter.project_slug }}.svg)](https://pypi.python.org/pypi/{{ cookiecutter.project_slug }})
-[![Actions status](https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.project_slug }}/workflows/checks.yaml/badge.svg)](https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.project_slug }}/actions/checks.yaml)
+[![Actions status](https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.project_slug }}/actions/workflows/checks.yaml/badge.svg)](https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.project_slug }}/actions/checks.yaml)
 
 <!-- description -->
 {{ cookiecutter.description }}
