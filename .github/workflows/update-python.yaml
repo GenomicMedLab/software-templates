@@ -30,7 +30,7 @@ jobs:
 
       - name: Update Ruff Version in pyproject.toml
         run: |
-          sed -i "s/\"ruff==.*\"/\"ruff==${{ env.RUFF_VERSION }}\"/" ${{ PYTHON_TEMPLATE_LOCATION }}/pyproject.toml
+          sed -i "s/\"ruff==.*\"/\"ruff==${{ env.RUFF_VERSION }}\"/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml
 
       # - name: Update Ruff Version in .pre-commit-config.yaml
       #   run: |
