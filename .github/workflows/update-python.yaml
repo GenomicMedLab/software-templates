@@ -17,7 +17,7 @@ jobs:
     name: Update Python template version pins
     runs-on: ubuntu-latest
     steps:
-      - name: Check out Repository
+      - name: Check out repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Necessary for history and branch creation  # TODO thats from chatgpt
@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: '3.8'  # use minimum supported Python version
 
-      - name: Get Latest Ruff Version
+      - name: Get latest ruff version
         id: ruff-version
         run: |
           echo "RUFF_VERSION=$(pip show ruff | grep 'Version' | cut -d ' ' -f 2)" >> $GITHUB_ENV
@@ -39,11 +39,12 @@ jobs:
       # - name: Update Ruff Version in .pre-commit-config.yaml
       #   run: |
       #     sed -i "s/rev: .* # ruff version/rev: ${{ env.RUFF_VERSION }} # ruff version/" .pre-commit-config.yaml
-      - name: Create New Branch for Changes
+
+      - name: Create new branch for changes
         run: |
           git checkout -b update-ruff-${{ env.RUFF_VERSION }}
 
-      - name: Commit and Push Changes
+      - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -51,9 +52,9 @@ jobs:
           git commit -m "Update ruff version to ${{ env.RUFF_VERSION }}" || exit 0 # Exit gracefully if no changes
           git push --set-upstream origin update-ruff-${{ env.RUFF_VERSION }}
 
-      - name: Create Pull Request
+      - name: Create pull request
         run: |
-          gh pr create --title "Update Ruff to version ${{ env.RUFF_VERSION }}" \
+          gh pr create --title "style: update ruff to ${{ env.RUFF_VERSION }}" \
                        --body "Automatically update the Ruff version in \`pyproject.toml\` and \`.pre-commit-config.yaml\`." \
                        --base main \
                        --head update-ruff-${{ env.RUFF_VERSION }}
