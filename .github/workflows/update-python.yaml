@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0 # Necessary for history and branch creation  # TODO thats from chatgpt
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.8'  # use minimum supported Python version
 
