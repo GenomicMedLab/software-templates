@@ -37,9 +37,9 @@ jobs:
         run: |
           sed -i "s/\"ruff==.*\"/\"ruff==${{ env.RUFF_VERSION }}\"/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml
 
-      # - name: Update Ruff Version in .pre-commit-config.yaml
-      #   run: |
-      #     sed -i "s/rev: .* # ruff version/rev: ${{ env.RUFF_VERSION }} # ruff version/" .pre-commit-config.yaml
+      - name: Update Ruff version in .pre-commit-config.yaml
+        run: |
+          sed -i "s/rev: .*  # ruff version/rev: ${{ env.RUFF_VERSION }}  # ruff version/" ${{ env.PYTHON_TEMPLATE_LOCATION }}.pre-commit-config.yaml
 
       - name: Create new branch for changes
         run: |
@@ -58,6 +58,7 @@ jobs:
           gh pr create --title "style: update ruff to ${{ env.RUFF_VERSION }}" \
                        --body "Automatically update the Ruff version in \`pyproject.toml\` and \`.pre-commit-config.yaml\`." \
                        --base main \
-                       --head update-ruff-${{ env.RUFF_VERSION }}
+                       --head update-ruff-${{ env.RUFF_VERSION }} \
+                       --reviewer jsstevenson korikuzma
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
