@@ -12,8 +12,6 @@ jobs:
   update_version_pins:
     name: Update Python template version pins
     runs-on: ubuntu-latest
-    permissions:
-      # TODO
     steps:
       - name: Check out Repository
         uses: actions/checkout@v4
