@@ -1,0 +1,55 @@
+# TODO
+# * get latest version of pre-commit hooks
+name: Update Python template version pins
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+
+env:
+  PYTHON_TEMPLATE_LOCATION: "python/{{cookiecutter.project_slug}}"
+
+jobs:
+  update_version_pins:
+    name: Update Python template version pins
+    runs-on: ubuntu-latest
+    permissions:
+      # TODO
+    steps:
+      - name: Check out Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Necessary for history and branch creation  # TODO thats from chatgpt
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'  # use minimum supported Python version
+
+      - name: Get Latest Ruff Version
+        id: ruff-version
+        run: |
+          echo "RUFF_VERSION=$(pip show ruff | grep 'Version' | cut -d ' ' -f 2)" >> $GITHUB_ENV
+
+      - name: Update Ruff Version in pyproject.toml
+        run: |
+          sed -i "s/\"ruff==.*\"/\"ruff==${{ env.RUFF_VERSION }}\"/" ${{ PYTHON_TEMPLATE_LOCATION }}/pyproject.toml
+
+      # - name: Update Ruff Version in .pre-commit-config.yaml
+      #   run: |
+      #     sed -i "s/rev: .* # ruff version/rev: ${{ env.RUFF_VERSION }} # ruff version/" .pre-commit-config.yaml
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add pyproject.toml .pre-commit-config.yaml
+          git commit -m "Update ruff version to ${{ env.RUFF_VERSION }}" || exit 0 # Exit gracefully if no changes
+          git push
+
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_title: "Update Ruff to version ${{ env.RUFF_VERSION }}"
+          pr_body: "Automatically update the Ruff version in `pyproject.toml` and `.pre-commit-config.yaml`."
+          pr_branch: "update-ruff-${{ env.RUFF_VERSION }}"
