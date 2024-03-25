@@ -3,8 +3,7 @@
 name: Update Python template version pins
 on:
   schedule:
-    - cron: 0 * * * *
-      # -cron: 0 0 1 1,7 *
+    - cron: "*/10 * * * *"
 
 env:
   PYTHON_TEMPLATE_LOCATION: "python/{{cookiecutter.project_slug}}"
