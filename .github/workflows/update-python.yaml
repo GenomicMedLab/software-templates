@@ -1,5 +1,3 @@
-# TODO
-# * get latest version of pre-commit hooks
 name: Update Python template version pins
 on:
   schedule:
@@ -20,7 +18,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Necessary for history and branch creation  # TODO thats from chatgpt
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
