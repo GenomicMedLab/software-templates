@@ -25,6 +25,9 @@ jobs:
         with:
           python-version: '3.8'  # use minimum supported Python version
 
+      - name: Install latest Ruff
+        run: python3 -m pip install ruff
+
       - name: Get latest ruff version
         id: ruff-version
         run: |
