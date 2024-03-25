@@ -49,7 +49,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml # Add other files as needed
+          git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
           git commit -m "Update ruff version to ${{ env.RUFF_VERSION }}" || exit 0 # Exit gracefully if no changes
           git push --set-upstream origin update-ruff-${{ env.RUFF_VERSION }}
 
