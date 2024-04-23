@@ -34,11 +34,25 @@ body:
         Include full errors, stack traces, and/or relevant logs.
     validations:
       required: true
-  - type: input
+  - type: textarea
     attributes:
-      label: Version or branch
-      description: Provide the version or branch you're using.
-      placeholder: ex. issue-1 (branch) or 0.0.1 (version)
+      label: Possible reason(s)
+      description: Provide any insights into what might be causing the issue.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Suggested fix
+      description: Provide any suggestions on how to resolve the bug.
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      label: Branch, commit, and/or version
+      description: Provide the branch, commit, and/or version you're using.
+      placeholder: |
+        branch: issue-1
+        commit: abc123d
     validations:
       required: true
   - type: textarea
@@ -59,3 +73,13 @@ body:
       description: Provide any other additional details about the problem.
     validations:
       required: false
+  - type: dropdown
+    attributes:
+      label: Contribution
+      description: Can you contribute to the development of this feature?
+      options:
+        - "Yes, I can create a PR for this fix."
+        - "Yes, but I can only provide ideas and feedback."
+        - "No, I cannot contribute."
+    validations:
+      required: true
