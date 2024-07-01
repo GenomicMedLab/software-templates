@@ -56,7 +56,7 @@ jobs:
 
       - name: Create pull request
         run: |
-          gh pr create --title "style: update ruff to ${{ env.RUFF_VERSION }}" \
+          gh pr create --title "style(python): update ruff to ${{ env.RUFF_VERSION }}" \
                        --body "Automatically update the Ruff version in \`pyproject.toml\` and \`.pre-commit-config.yaml\`." \
                        --base main \
                        --head update-ruff-${{ env.RUFF_VERSION }} \
@@ -109,7 +109,7 @@ jobs:
 
       - name: Create pull request
         run: |
-          gh pr create --title "style: update precommit to ${{ env.PRECOMMIT_VERSION }}" \
+          gh pr create --title "cicd(python): update precommit to ${{ env.PRECOMMIT_VERSION }}" \
                        --body "Automatically update the pre-commit version in \`pyproject.toml\` and \`.pre-commit-config.yaml\`." \
                        --base main \
                        --head update-precommit-${{ env.PRECOMMIT_VERSION }} \
@@ -155,7 +155,7 @@ jobs:
 
       - name: Create pull request
         run: |
-          gh pr create --title "style: update pre-commit-hooks to ${{ env.PRECOMMIT_HOOKS_VERSION }}" \
+          gh pr create --title "cicd(python): update pre-commit-hooks to ${{ env.PRECOMMIT_HOOKS_VERSION }}" \
                        --body "Automatically update the pre-commit-hooks version in \`.pre-commit-config.yaml\`." \
                        --base main \
                        --head update-precommit-hooks-${{ env.PRECOMMIT_HOOKS_VERSION }} \
