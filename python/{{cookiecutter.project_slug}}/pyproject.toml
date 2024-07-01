@@ -23,7 +23,7 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 tests = ["pytest", "pytest-cov"]
-dev = ["pre-commit", "ruff==0.2.0"]
+dev = ["pre-commit>=3.7.1", "ruff==0.2.0"]
 {% if cookiecutter.add_docs %}
 docs = [
     "sphinx==6.1.3",
