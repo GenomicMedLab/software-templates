@@ -5,6 +5,7 @@ on:
 
 env:
   PYTHON_TEMPLATE_LOCATION: "python/{{cookiecutter.project_slug}}"
+  MIN_PYTHON_VERSION: "3.10"  # use minimum supported python version
 
 permissions:
   contents: write
@@ -23,7 +24,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'  # use minimum supported Python version
+          python-version: ${{ env.MIN_PYTHON_VERSION }}
 
       - name: Install latest Ruff
         run: python3 -m pip install ruff
@@ -75,7 +76,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'  # use minimum supported Python version
+          python-version: ${{ env.MIN_PYTHON_VERSION }}
 
       - name: Install latest pre-commit
         run: python3 -m pip install pre-commit
@@ -90,7 +91,8 @@ jobs:
           sed -i "s/\"pre-commit==.*\"/\"pre-commit==${{ env.PRECOMMIT_VERSION }}\"/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml
 
       - name: Update min pre-commit version requirement in .pre-commit-config.yaml
-        # TODO
+        run: |
+          sed -i "s/minimum_pre_commit_version: .*/minimum_pre_commit_version: ${{ env.PRECOMMIT_VERSION }}/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
 
       - name: Create new branch for changes
         run: |
@@ -127,13 +129,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'  # use minimum supported Python version
+          python-version: ${{ env.MIN_PYTHON_VERSION }}
 
       - name: Get latest pre-commit-hooks version
-        # TODO
+        run: |
+          latest_tag=$(curl -s https://api.github.com/repos/pre-commit/pre-commit-hooks/releases | jq -r '.[0].tag_name')
+          echo "PRECOMMIT_HOOKS_VERSION=$latest_tag" >> $GITHUB_ENV
 
       - name: Update pre-commit-hooks version in .pre-commit-config.yaml
-        # TODO
+        run: |
+          sed -i "s/rev: .*  # pre-commit-hooks version/rev: ${{ env.PRECOMMIT_HOOKS_VERSION }}  # pre-commit-hooks version/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
 
       - name: Create new branch for changes
         run: |
