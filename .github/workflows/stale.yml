@@ -5,21 +5,21 @@ on:
     - cron: "30 13 * * *"
 
 jobs:
-  high-priority:
+  stale-high-priority:
     uses: ./.github/workflows/reusable-stale.yaml
     with:
       days-before-issue-stale: 90
       days-before-pr-stale: 1
       labels: priority:high
 
-  medium-priority:
+  stale-medium-priority:
     uses: ./.github/workflows/reusable-stale.yaml
     with:
       days-before-issue-stale: 135
       days-before-pr-stale: 3
       labels: priority:medium
 
-  low-priority:
+  stale-low-priority:
     uses: ./.github/workflows/reusable-stale.yaml
     with:
       days-before-issue-stale: 180
