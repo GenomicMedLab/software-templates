@@ -17,8 +17,8 @@ on:
         description: Comma-separated list of labels to exclude from stalebot
         type: string
       labels:
+        default: ""
         description: Comma-separated list of labels to apply to stalebot
-        required: true
         type: string
 
 jobs:
