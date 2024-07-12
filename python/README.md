@@ -11,4 +11,3 @@ Currently used in
 * [GenomicMedLab/agct/](https://github.com/GenomicMedLab/agct/)
 * [GenomicMedLab/wags-tails](https://github.com/GenomicMedLab/wags-tails)
 * [GenomicMedLab/dgipy/](https://github.com/GenomicMedLab/dgipy/)
-* [GenomicMedLab/fusion-curation/](https://github.com/cancervariants/fusion-curation/)
