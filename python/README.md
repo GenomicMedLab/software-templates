@@ -11,3 +11,4 @@ Currently used in
 * [GenomicMedLab/agct/](https://github.com/GenomicMedLab/agct/)
 * [GenomicMedLab/wags-tails](https://github.com/GenomicMedLab/wags-tails)
 * [GenomicMedLab/dgipy/](https://github.com/GenomicMedLab/dgipy/)
+* [ave-dcd/dcd-mapping](https://github.com/ave-dcd/dcd_mapping/)
