@@ -40,7 +40,7 @@ jobs:
 
       - name: Update Ruff version in .pre-commit-config.yaml
         run: |
-          sed -i "s/rev: .*  # ruff version/rev: ${{ env.RUFF_VERSION }}  # ruff version/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
+          sed -i "s/rev: .*  # ruff version/rev: v${{ env.RUFF_VERSION }}  # ruff version/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
 
       - name: Create new branch for changes
         run: |
