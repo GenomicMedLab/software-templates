@@ -49,7 +49,7 @@ jobs:
           - name: "Check trailing whitespace"
             args: "trailing-whitespace --all-files"
           - name: "Check line ending format"
-            args: "mixed-line-ending --fix=lf"
+            args: "mixed-line-ending --fix=lf --all-files"
     steps:
       - uses: actions/checkout@v3
 
