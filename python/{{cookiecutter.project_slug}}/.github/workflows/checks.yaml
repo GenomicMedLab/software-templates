@@ -39,6 +39,16 @@ jobs:
       - name: Check style
         run: python3 -m ruff check . && python3 -m ruff format --check .
 
+      - name: Check EOF format
+        uses: pre-commit/action@v3.0.1
+        with:
+          extra_args: end-of-file-fixer --all-files
+
+      - name: Check trailing whitespace
+        uses: pre-commit/action@v3.0.1
+        with:
+          extra_args: trailing-whitespace --all-files
+
 {% if cookiecutter.add_docs %}
   docs:
     runs-on: ubuntu-latest
