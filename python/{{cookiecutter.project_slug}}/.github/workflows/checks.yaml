@@ -49,6 +49,11 @@ jobs:
         with:
           extra_args: trailing-whitespace --all-files
 
+      - name: Check line ending format
+        uses: pre-commit/action@v3.0.1
+        with:
+          extra_args: mixed-line-ending --fix=lf
+
 {% if cookiecutter.add_docs %}
   docs:
     runs-on: ubuntu-latest
