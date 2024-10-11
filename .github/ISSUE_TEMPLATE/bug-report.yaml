@@ -34,6 +34,14 @@ body:
         Include full errors, stack traces, and/or relevant logs.
     validations:
       required: true
+    - type: textarea
+    attributes:
+      label: Acceptance Criteria
+      description: |
+        Provide the criteria must be met in order for this issue to be considered fixed.
+        Be specific, and consider potential edge cases.
+    validations:
+      required: true
   - type: textarea
     attributes:
       label: Possible reason(s)
