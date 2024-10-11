@@ -38,7 +38,7 @@ body:
     attributes:
       label: Acceptance Criteria
       description: |
-        Provide the criteria must be met in order for this issue to be considered fixed.
+        Provide the criteria that must be met in order for this issue to be considered fixed.
         Be specific, and consider potential edge cases.
     validations:
       required: true
