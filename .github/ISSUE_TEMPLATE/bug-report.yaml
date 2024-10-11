@@ -34,7 +34,7 @@ body:
         Include full errors, stack traces, and/or relevant logs.
     validations:
       required: true
-    - type: textarea
+  - type: textarea
     attributes:
       label: Acceptance Criteria
       description: |
