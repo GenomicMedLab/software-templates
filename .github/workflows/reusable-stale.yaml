@@ -28,6 +28,7 @@ jobs:
       - name: Mark issues and PRs as stale
         uses: actions/stale@v9
         with:
+          exempt-draft-pr: true
           only-labels: ${{ inputs.labels }}
           exempt-issue-labels: ${{ inputs.exempt-labels }}
           exempt-pr-labels: ${{ inputs.exempt-labels }}
