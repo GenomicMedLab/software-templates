@@ -5,7 +5,7 @@ on:
 
 env:
   PYTHON_TEMPLATE_LOCATION: "python/{{cookiecutter.project_slug}}"
-  MIN_PYTHON_VERSION: "3.10"  # use minimum supported python version
+  MIN_PYTHON_VERSION: "3.11"  # use minimum supported python version
 
 permissions:
   contents: write
