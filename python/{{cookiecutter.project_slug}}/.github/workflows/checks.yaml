@@ -45,11 +45,11 @@ jobs:
       matrix:
         hook:
           - name: "Check EOF format"
-            args: "end-of-file-fixer --all-files"
+            args: "end-of-file-fixer"
           - name: "Check trailing whitespace"
-            args: "trailing-whitespace --all-files"
+            args: "trailing-whitespace"
           - name: "Check line ending format"
-            args: "mixed-line-ending --fix=lf --all-files"
+            args: "mixed-line-ending"
     steps:
       - uses: actions/checkout@v4
 
