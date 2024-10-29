@@ -44,12 +44,9 @@ jobs:
     strategy:
       matrix:
         hook:
-          - name: "Check EOF format"
-            args: "end-of-file-fixer"
-          - name: "Check trailing whitespace"
-            args: "trailing-whitespace"
-          - name: "Check line ending format"
-            args: "mixed-line-ending"
+          - cmd: "end-of-file-fixer"
+          - cmd: "trailing-whitespace"
+          - cmd: "mixed-line-ending"
     steps:
       - uses: actions/checkout@v4
 
@@ -62,8 +59,8 @@ jobs:
         run: |
           python3 -m pip install ".[dev]"
 
-      - name: {{ "${{ matrix.hook.name }}" }}
-        run: pre-commit run {{ "${{ matrix.hook.args }}" }} --all-files
+      - name: Run pre-commit {{ "${{ matrix.hook.cmd }}" }} hook
+        run: pre-commit run {{ "${{ matrix.hook.cmd }}" }} --all-files
 
 {% if cookiecutter.add_docs %}
   docs:
