@@ -13,3 +13,4 @@ Currently used in
 * [GenomicMedLab/dgipy](https://github.com/GenomicMedLab/dgipy/)
 * [GenomicMedLab/regbot](https://github.com/GenomicMedLab/regbot)
 * [ave-dcd/dcd-mapping](https://github.com/ave-dcd/dcd_mapping/)
+* [gks-anvil/vrsix](https://github.com/gks-anvil/vrsix)
