@@ -18,14 +18,16 @@ classifiers = [
 requires-python = ">=3.11"
 description = "{{ cookiecutter.description }}"
 license = {file = "LICENSE"}
-dependencies = []
+dependencies = [
+{% if cookiecutter.add_fastapi %}    "fastapi",
+    "pydantic~=2.1",{% endif %}
+]
 dynamic = ["version"]
 
 [project.optional-dependencies]
 tests = ["pytest", "pytest-cov"]
 dev = ["pre-commit>=3.7.1", "ruff==0.5.0"]
-{% if cookiecutter.add_docs %}
-docs = [
+{% if cookiecutter.add_docs %}docs = [
     "sphinx==6.1.3",
     "sphinx-autodoc-typehints==1.22.0",
     "sphinx-autobuild==2021.3.14",
@@ -33,8 +35,7 @@ docs = [
     "sphinxext-opengraph==0.8.2",
     "furo==2023.3.27",
     "sphinx-github-changelog==1.2.1"
-]
-{% endif %}
+]{% endif %}
 
 [project.urls]
 Homepage = "https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}"
