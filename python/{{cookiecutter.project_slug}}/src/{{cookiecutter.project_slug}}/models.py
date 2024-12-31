@@ -32,6 +32,8 @@ class ServiceEnvironment(str, Enum):
 
     DEV = "dev"
     PROD = "prod"
+    TEST = "test"
+    STAGING = "staging"
 
 
 class ServiceInfo(BaseModel):
