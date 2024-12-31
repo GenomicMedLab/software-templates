@@ -1,6 +1,8 @@
 """Define models for internal data and API responses."""
 
+from enum import Enum
 from typing import Literal
+
 from pydantic import BaseModel
 
 from . import __version__
@@ -25,17 +27,30 @@ class ServiceType(BaseModel):
     version: Literal["1.0.0"] = "1.0.0"
 
 
-class ServiceInfo(BaseModel):
-    """Define response structure for GA4GH service_info endpoint."""
+class ServiceEnvironment(str, Enum):
+    """Define current environment for service_info field"""
 
+    DEV = "dev"
+    PROD = "prod"
+
+
+class ServiceInfo(BaseModel):
+    """Define response structure for GA4GH /service_info endpoint."""
+
+    id: Literal["org.genomicmedlab.{{ cookiecutter.project_slug }}"] = (
+        "org.genomicmedlab.{{ cookiecutter.project_slug }}"
+    )
     name: Literal["{{ cookiecutter.project_slug }}"] = "{{ cookiecutter.project_slug }}"
-    id: Literal["org.genomicmedlab.{{ cookiecutter.project_slug }}"] = "org.genomicmedlab.{{ cookiecutter.project_slug }}"
-    description: Literal["{{ cookiecutter.description }}"] = "{{ cookiecutter.description }}"
     type: ServiceType
+    description: Literal["{{ cookiecutter.description }}"] = "{{ cookiecutter.description }}"
     organization: ServiceOrganization
-    version: Literal[__version__] = __version__
-    contact_url: Literal["Alex.Wagner@nationwidechildrens.org"] = (
+    contactUrl: Literal["Alex.Wagner@nationwidechildrens.org"] = (  # noqa: N815
         "Alex.Wagner@nationwidechildrens.org"
+    )
+    documentationUrl: Literal["https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}"] = (  # noqa: N815
+        "https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}"
     )
     createdAt: Literal["{% now 'utc', '%Y-%m-%dT%H:%M:%S+00:00' %}"] = "{% now 'utc', '%Y-%m-%dT%H:%M:%S+00:00' %}"  # noqa: N815
     updatedAt: str | None = None  # noqa: N815
+    environment: ServiceEnvironment = ServiceEnvironment.DEV
+    version: Literal[__version__] = __version__

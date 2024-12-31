@@ -1,9 +1,17 @@
 """Define API endpoints."""
 
+from enum import Enum
+
 from fastapi import FastAPI
 
 from {{ cookiecutter.project_slug }} import __version__
-from {{ cookiecutter.project_slug }}.models import ServiceInfo
+from {{ cookiecutter.project_slug }}.models import ServiceInfo, ServiceOrganization, ServiceType
+
+
+class _Tag(str, Enum):
+    """Define tag names for endpoints."""
+
+    META = "Meta"
 
 
 app = FastAPI(
@@ -30,11 +38,13 @@ app = FastAPI(
     summary="Get basic service information",
     response_model=ServiceInfo,
     description="Retrieve service metadata, such as versioning and contact info. Structured in conformance with the [GA4GH service info API specification](https://www.ga4gh.org/product/service-info/)",
-    tags=["Meta"],
+    tags=[
+        _Tag.META,
+    ],
 )
 def service_info() -> ServiceInfo:
     """Provide service info per GA4GH Service Info spec
 
     :return: conformant service info description
     """
-    return ServiceInfo()
+    return ServiceInfo(organization=ServiceOrganization(), type=ServiceType())
