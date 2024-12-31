@@ -60,9 +60,9 @@ sys.path.insert(0, os.path.abspath("../../"))
 autodoc_preserve_defaults = True
 
 # -- get version -------------------------------------------------------------
-from importlib.metadata import version
+from importlib.metadata import version as get_version
 
-release = version = version("{{ cookiecutter.project_slug }}")
+release = version = get_version("{{ cookiecutter.project_slug }}")
 
 # -- linkcode ----------------------------------------------------------------
 def linkcode_resolve(domain, info):
