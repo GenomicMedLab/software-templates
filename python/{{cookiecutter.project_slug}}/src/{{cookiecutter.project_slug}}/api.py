@@ -1,16 +1,27 @@
 """Define API endpoints."""
 
 from enum import Enum
+from contextlib import asynccontextmanager
+from typing import AsyncGenerator
 
 from fastapi import FastAPI
 
 from {{ cookiecutter.project_slug }} import __version__
 from {{ cookiecutter.project_slug }}.models import ServiceInfo, ServiceOrganization, ServiceType
 from {{ cookiecutter.project_slug }}.config import config
+from {{ cookiecutter.project_slug }}.logging import initialize_logs
 
 
-# TODO add logging configuration
-# make this module add to main
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator:
+    """Perform operations that interact with the lifespan of the FastAPI instance.
+
+    See https://fastapi.tiangolo.com/advanced/events/#lifespan.
+
+    :param app: FastAPI instance
+    """
+    initialize_logs()
+    yield
 
 
 class _Tag(str, Enum):
@@ -52,7 +63,6 @@ def service_info() -> ServiceInfo:
 
     :return: conformant service info description
     """
-
     return ServiceInfo(
         organization=ServiceOrganization(),
         type=ServiceType(),
