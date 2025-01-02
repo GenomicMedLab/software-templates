@@ -54,9 +54,7 @@ app = FastAPI(
     summary="Get basic service information",
     response_model=ServiceInfo,
     description="Retrieve service metadata, such as versioning and contact info. Structured in conformance with the [GA4GH service info API specification](https://www.ga4gh.org/product/service-info/)",
-    tags=[
-        _Tag.META,
-    ],
+    tags=[_Tag.META],
 )
 def service_info() -> ServiceInfo:
     """Provide service info per GA4GH Service Info spec
