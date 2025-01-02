@@ -24,7 +24,7 @@ class ServiceType(BaseModel):
 
     group: Literal["org.genomicmedlab"] = "org.genomicmedlab"
     artifact: Literal["{{ cookiecutter.project_slug }} API"] = "{{ cookiecutter.project_slug }} API"
-    version: Literal["1.0.0"] = "1.0.0"
+    version: Literal[__version__] = __version__
 
 
 class ServiceEnvironment(str, Enum):
