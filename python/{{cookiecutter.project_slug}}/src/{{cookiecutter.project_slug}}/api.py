@@ -10,6 +10,7 @@ from {{ cookiecutter.project_slug }}.config import config
 
 
 # TODO add logging configuration
+# make this module add to main
 
 
 class _Tag(str, Enum):
