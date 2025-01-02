@@ -9,26 +9,46 @@ from .models import Config, ServiceEnvironment
 _logger = logging.getLogger(__name__)
 
 
-_ENV_VARNAME = "{{ cookiecutter.project_slug | upper }}"
+_ENV_VARNAME = "{{ cookiecutter.project_slug | upper }}_ENV"
 
 
 def _dev_config() -> Config:
+    """Provide development environment configs
+
+    :return: dev env configs
+    """
     return Config(env=ServiceEnvironment.DEV, debug=True, test=False)
 
 
 def _test_config() -> Config:
+    """Provide test env configs
+
+    :return: test configs
+    """
     return Config(env=ServiceEnvironment.TEST, debug=False, test=True)
 
 
 def _staging_config() -> Config:
+    """Provide staging env configs
+
+    :return: staging configs
+    """
     return Config(env=ServiceEnvironment.STAGING, debug=False, test=False)
 
 
 def _prod_config() -> Config:
+    """Provide production configs
+
+    :return: prod configs
+    """
     return Config(env=ServiceEnvironment.PROD, debug=False, test=False)
 
 
-def _default_config():
+def _default_config() -> Config:
+    """Provide default configs. This function sets what they are.
+
+    :return: default configs
+    """
     return _dev_config()
 
 

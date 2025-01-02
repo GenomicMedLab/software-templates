@@ -6,7 +6,7 @@ import logging
 def initialize_logs(log_level: int = logging.DEBUG) -> None:
     """Configure logging.
 
-    :param log_level: global log level to set
+    :param log_level: app log level to set
     """
     log_filename = f"{__package__}.log"
     logging.basicConfig(
