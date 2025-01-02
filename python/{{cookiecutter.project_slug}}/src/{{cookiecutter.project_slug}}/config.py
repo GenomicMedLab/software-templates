@@ -3,7 +3,7 @@
 import logging
 import os
 
-from .models import ServiceEnvironment, Config
+from .models import Config, ServiceEnvironment
 
 
 _logger = logging.getLogger(__name__)
@@ -13,39 +13,24 @@ _ENV_VARNAME = "{{ cookiecutter.project_slug | upper }}"
 
 
 def _dev_config() -> Config:
-    return Config(
-        env=ServiceEnvironment.DEV,
-        debug=True,
-        test=False
-    )
+    return Config(env=ServiceEnvironment.DEV, debug=True, test=False)
 
 
 def _test_config() -> Config:
-    return Config(
-        env=ServiceEnvironment.TEST,
-        debug=False,
-        test=True
-    )
+    return Config(env=ServiceEnvironment.TEST, debug=False, test=True)
 
 
 def _staging_config() -> Config:
-    return Config(
-        env=ServiceEnvironment.STAGING,
-        debug=False,
-        test=False,
-    )
+    return Config(env=ServiceEnvironment.STAGING, debug=False, test=False)
 
 
 def _prod_config() -> Config:
-    return Config(
-        env=ServiceEnvironment.PROD,
-        debug=False,
-        test=False,
-    )
+    return Config(env=ServiceEnvironment.PROD, debug=False, test=False)
 
 
 def _default_config():
     return _dev_config()
+
 
 _CONFIG_MAP = {
     ServiceEnvironment.DEV: _dev_config,
@@ -66,7 +51,11 @@ def _set_config() -> Config:
     try:
         env_value = ServiceEnvironment(raw_env_value.lower())
     except ValueError:
-        _logger.error("Unrecognized value for %s: %s. Using default configs", _ENV_VARNAME, raw_env_value)
+        _logger.error(
+            "Unrecognized value for %s: %s. Using default configs",
+            _ENV_VARNAME,
+            raw_env_value
+        )
         return _default_config()
     return _CONFIG_MAP[env_value]()
 

@@ -13,4 +13,5 @@ if not {{ cookiecutter.add_fastapi }}:
     Path("tests/test_api.py").unlink()
     Path("src/{{ cookiecutter.project_slug }}/api.py").unlink()
     Path("src/{{ cookiecutter.project_slug }}/models.py").unlink()
+    Path("src/{{ cookiecutter.project_slug }}/config.py").unlink()
     Path("src/{{ cookiecutter.project_slug }}/logging.py").unlink()

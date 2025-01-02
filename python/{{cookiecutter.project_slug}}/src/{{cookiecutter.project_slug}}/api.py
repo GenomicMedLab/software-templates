@@ -1,15 +1,15 @@
 """Define API endpoints."""
 
-from enum import Enum
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
-from typing import AsyncGenerator
+from enum import Enum
 
 from fastapi import FastAPI
 
 from {{ cookiecutter.project_slug }} import __version__
-from {{ cookiecutter.project_slug }}.models import ServiceInfo, ServiceOrganization, ServiceType
 from {{ cookiecutter.project_slug }}.config import config
 from {{ cookiecutter.project_slug }}.logging import initialize_logs
+from {{ cookiecutter.project_slug }}.models import ServiceInfo, ServiceOrganization, ServiceType
 
 
 @asynccontextmanager
@@ -64,7 +64,5 @@ def service_info() -> ServiceInfo:
     :return: conformant service info description
     """
     return ServiceInfo(
-        organization=ServiceOrganization(),
-        type=ServiceType(),
-        environment=config.env
+        organization=ServiceOrganization(), type=ServiceType(), environment=config.env
     )
