@@ -25,7 +25,11 @@ dependencies = [
 dynamic = ["version"]
 
 [project.optional-dependencies]
-tests = ["pytest", "pytest-cov"]
+tests = [
+    "pytest",
+    "pytest-cov",
+{% if cookiecutter.add_fastapi %}    "httpx",{% endif %}
+]
 dev = ["pre-commit>=3.7.1", "ruff==0.5.0"]
 {% if cookiecutter.add_docs %}docs = [
     "sphinx==6.1.3",

@@ -8,6 +8,23 @@ from pydantic import BaseModel
 from . import __version__
 
 
+class ServiceEnvironment(str, Enum):
+    """Define current runtime environment."""
+
+    DEV = "dev"
+    PROD = "prod"
+    TEST = "test"
+    STAGING = "staging"
+
+
+class Config(BaseModel):
+    """Define app configuration data object."""
+
+    env: ServiceEnvironment
+    debug: bool
+    test: bool
+
+
 class ServiceOrganization(BaseModel):
     """Define service_info response for organization field"""
 
@@ -25,15 +42,6 @@ class ServiceType(BaseModel):
     group: Literal["org.genomicmedlab"] = "org.genomicmedlab"
     artifact: Literal["{{ cookiecutter.project_slug }} API"] = "{{ cookiecutter.project_slug }} API"
     version: Literal[__version__] = __version__
-
-
-class ServiceEnvironment(str, Enum):
-    """Define current environment for service_info field"""
-
-    DEV = "dev"
-    PROD = "prod"
-    TEST = "test"
-    STAGING = "staging"
 
 
 class ServiceInfo(BaseModel):
@@ -54,5 +62,5 @@ class ServiceInfo(BaseModel):
     )
     createdAt: Literal["{% now 'utc', '%Y-%m-%dT%H:%M:%S+00:00' %}"] = "{% now 'utc', '%Y-%m-%dT%H:%M:%S+00:00' %}"  # noqa: N815
     updatedAt: str | None = None  # noqa: N815
-    environment: ServiceEnvironment = ServiceEnvironment.DEV
+    environment: ServiceEnvironment
     version: Literal[__version__] = __version__

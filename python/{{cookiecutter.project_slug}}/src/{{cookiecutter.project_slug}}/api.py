@@ -6,6 +6,10 @@ from fastapi import FastAPI
 
 from {{ cookiecutter.project_slug }} import __version__
 from {{ cookiecutter.project_slug }}.models import ServiceInfo, ServiceOrganization, ServiceType
+from {{ cookiecutter.project_slug }}.config import config
+
+
+# TODO add logging configuration
 
 
 class _Tag(str, Enum):
@@ -47,4 +51,9 @@ def service_info() -> ServiceInfo:
 
     :return: conformant service info description
     """
-    return ServiceInfo(organization=ServiceOrganization(), type=ServiceType())
+
+    return ServiceInfo(
+        organization=ServiceOrganization(),
+        type=ServiceType(),
+        environment=config.env
+    )
