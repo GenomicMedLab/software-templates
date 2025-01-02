@@ -1,5 +1,6 @@
 """Test FastAPI endpoint function."""
 
+from datetime import datetime
 import re
 
 import pytest
@@ -22,7 +23,6 @@ def test_service_info(api_client: TestClient):
     assert response_json["name"] == "{{ cookiecutter.project_slug }}"
     assert response_json["type"]["group"] == "org.genomicmedlab"
     assert response_json["type"]["artifact"] == "{{ cookiecutter.project_slug }} API"
-    assert re.match(r"\d\.\d\.\d\.", response_json["type"]["version"])
     assert response_json["description"] == "{{ cookiecutter.description }}"
     assert response_json["organization"] == {
         "name": "Genomic Medicine Lab at Nationwide Children's Hospital",
@@ -33,8 +33,8 @@ def test_service_info(api_client: TestClient):
         response_json["documentationUrl"]
         == "https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}"
     )
+    assert datetime.fromisoformat(response_json["createdAt"])
     assert ServiceEnvironment(response_json["environment"])
-    assert re.match(r"\d\.\d\.\d\.", response_json["version"])
 
 
 def test_service_info_version(api_client: TestClient):
