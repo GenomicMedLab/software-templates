@@ -6,5 +6,6 @@
     "repo": "{{ cookiecutter.project_slug }}",
     "your_name": "",
     "your_email": "",
-    "add_docs": [false, true]
+    "add_docs": [false, true],
+    "add_cli": [false, true]
 }
