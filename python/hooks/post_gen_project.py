@@ -10,4 +10,5 @@ if not {{ cookiecutter.add_docs }}:
 if not {{ cookiecutter.add_cli }}:
     Path("./src/{{ cookiecutter.project_slug }}/cli.py").unlink()
     Path("./src/{{ cookiecutter.project_slug }}/logging.py").unlink()
-    Path("./docs/source/cli_reference.rst").unlink()
+    if {{ cookiecutter.add_docs }}:
+        Path("./docs/source/cli_reference.rst").unlink()
