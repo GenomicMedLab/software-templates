@@ -148,7 +148,6 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 # ANN001 - missing-type-function-argument
 # ANN2 - missing-return-type
-# ANN102 - missing-type-cls
 # D100 - undocumented-public-module
 # D102 - undocumented-public-class
 # S101 - assert
@@ -157,7 +156,6 @@ ignore = [
 "tests/*" = [
     "ANN001",
     "ANN2",
-    "ANN102",
     "D100",
     "D102",
     "S101",
