@@ -22,3 +22,4 @@ def cli() -> None:
 
 
 # TODO add fastapi serve subcommand
+# once that PR is merged
