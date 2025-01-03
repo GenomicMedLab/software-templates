@@ -120,6 +120,7 @@ fixable = [
     "SIM",
     "PLC",
     "PLE",
+    "TRY",
     "PERF",
     "FURB",
     "RUF"
