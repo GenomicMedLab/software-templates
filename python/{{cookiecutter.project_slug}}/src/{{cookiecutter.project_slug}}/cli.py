@@ -2,8 +2,8 @@
 
 import click
 
-from . import __version__
-from .logging import initialize_logs
+from {{ cookiecutter.project_slug }} import __version__
+from {{ cookiecutter.project_slug }}.logging import initialize_logs
 
 
 @click.group()
