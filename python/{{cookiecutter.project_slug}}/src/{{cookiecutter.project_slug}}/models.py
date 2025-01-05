@@ -17,14 +17,6 @@ class ServiceEnvironment(str, Enum):
     STAGING = "staging"
 
 
-class Config(BaseModel):
-    """Define app configuration data object."""
-
-    env: ServiceEnvironment
-    debug: bool
-    test: bool
-
-
 class ServiceOrganization(BaseModel):
     """Define service_info response for organization field"""
 

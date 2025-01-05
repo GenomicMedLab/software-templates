@@ -3,6 +3,8 @@
 import logging
 import os
 
+from pydantic import BaseModel
+
 from {{ cookiecutter.project_slug }}.models import Config, ServiceEnvironment
 
 
@@ -10,6 +12,14 @@ _logger = logging.getLogger(__name__)
 
 
 _ENV_VARNAME = "{{ cookiecutter.project_slug | upper }}_ENV"
+
+
+class Config(BaseModel):
+    """Define app configuration data object."""
+
+    env: ServiceEnvironment
+    debug: bool
+    test: bool
 
 
 def _dev_config() -> Config:
