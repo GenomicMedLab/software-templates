@@ -18,13 +18,13 @@ def api_client():
 def test_service_info(api_client: TestClient):
     response = api_client.get("/service_info")
     assert response.status_code == 200
-    EXPECTED_VERSION_PATTERN = r"\d\.\d\."
+    expected_version_pattern = r"\d\.\d\."  # at minimum, should be something like "0.1"
     response_json = response.json()
     assert response_json["id"] == "org.genomicmedlab.{{ cookiecutter.project_slug }}"
     assert response_json["name"] == "{{ cookiecutter.project_slug }}"
     assert response_json["type"]["group"] == "org.genomicmedlab"
     assert response_json["type"]["artifact"] == "{{ cookiecutter.project_slug }} API"
-    assert re.match(EXPECTED_VERSION_PATTERN, response_json["type"]["version"])
+    assert re.match(expected_version_pattern, response_json["type"]["version"])
     assert response_json["description"] == "{{ cookiecutter.description }}"
     assert response_json["organization"] == {
         "name": "Genomic Medicine Lab at Nationwide Children's Hospital",
@@ -37,4 +37,4 @@ def test_service_info(api_client: TestClient):
     )
     assert datetime.fromisoformat(response_json["createdAt"])
     assert ServiceEnvironment(response_json["environment"])
-    assert re.match(EXPECTED_VERSION_PATTERN, response_json["version"])
+    assert re.match(expected_version_pattern, response_json["version"])

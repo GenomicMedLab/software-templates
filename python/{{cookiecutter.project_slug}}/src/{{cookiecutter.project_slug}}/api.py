@@ -13,7 +13,7 @@ from {{ cookiecutter.project_slug }}.models import ServiceInfo, ServiceOrganizat
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI) -> AsyncGenerator:
+async def lifespan(app: FastAPI) -> AsyncGenerator:  # noqa: ARG001
     """Perform operations that interact with the lifespan of the FastAPI instance.
 
     See https://fastapi.tiangolo.com/advanced/events/#lifespan.
@@ -52,7 +52,6 @@ app = FastAPI(
 @app.get(
     "/service_info",
     summary="Get basic service information",
-    response_model=ServiceInfo,
     description="Retrieve service metadata, such as versioning and contact info. Structured in conformance with the [GA4GH service info API specification](https://www.ga4gh.org/product/service-info/)",
     tags=[_Tag.META],
 )
