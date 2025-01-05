@@ -3,7 +3,7 @@
 import logging
 import os
 
-from .models import Config, ServiceEnvironment
+from {{ cookiecutter.project_slug }}.models import Config, ServiceEnvironment
 
 
 _logger = logging.getLogger(__name__)
