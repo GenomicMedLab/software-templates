@@ -45,14 +45,14 @@ jobs:
 
       - name: Create new branch, commit, and push changes
         run: |
-          git checkout -b update-ruff-${{ env.RUFF_VERSION }}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
           if git diff --quiet origin/main..; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
+            git checkout -b update-ruff-${{ env.RUFF_VERSION }}
+            git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
             git commit -m "Update ruff version to ${{ env.RUFF_VERSION }}"
             echo "new_commits=true" >> $GITHUB_ENV
           fi;
@@ -102,14 +102,14 @@ jobs:
 
       - name: Create new branch, commit, and push changes
         run: |
-          git checkout -b update-precommit-${{ env.PRECOMMIT_VERSION }}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
           if git diff --quiet origin/main..; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
+            git checkout -b update-precommit-${{ env.PRECOMMIT_VERSION }}
+            git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
             git commit -m "Update precommit to ${{ env.PRECOMMIT_VERSION }}"
             echo "new_commits=true" >> $GITHUB_ENV
           fi;
@@ -152,14 +152,14 @@ jobs:
 
       - name: Create new branch, commit, and push changes
         run: |
-          git checkout -b update-precommit-hooks-${{ env.PRECOMMIT_HOOKS_VERSION }}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
           if git diff --quiet origin/main..; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
+            git checkout -b update-precommit-hooks-${{ env.PRECOMMIT_HOOKS_VERSION }}
+            git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
             git commit -m "Update pre-commit-hooks version to ${{ env.PRECOMMIT_HOOKS_VERSION }}"
             echo "new_commits=true" >> $GITHUB_ENV
           fi;
