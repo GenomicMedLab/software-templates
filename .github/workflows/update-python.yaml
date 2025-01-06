@@ -47,7 +47,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          if git diff --quiet origin/main..; then
+          if git diff --quiet; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
@@ -104,7 +104,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          if git diff --quiet origin/main..; then
+          if git diff --quiet; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
@@ -154,7 +154,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          if git diff --quiet origin/main..; then
+          if git diff --quiet; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
