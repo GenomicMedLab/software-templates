@@ -49,11 +49,11 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
-          git commit -m "Update ruff version to ${{ env.RUFF_VERSION }}"
           if git diff --quiet origin/main..; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
+            git commit -m "Update ruff version to ${{ env.RUFF_VERSION }}"
             echo "new_commits=true" >> $GITHUB_ENV
           fi;
           git push --set-upstream origin update-ruff-${{ env.RUFF_VERSION }}
@@ -106,11 +106,11 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
-          git commit -m "Update precommit to ${{ env.PRECOMMIT_VERSION }}"
           if git diff --quiet origin/main..; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
+            git commit -m "Update precommit to ${{ env.PRECOMMIT_VERSION }}"
             echo "new_commits=true" >> $GITHUB_ENV
           fi;
           git push --set-upstream origin update-precommit-${{ env.PRECOMMIT_VERSION }}
@@ -156,11 +156,11 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
-          git commit -m "Update pre-commit-hooks version to ${{ env.PRECOMMIT_HOOKS_VERSION }}"
           if git diff --quiet origin/main..; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
+            git commit -m "Update pre-commit-hooks version to ${{ env.PRECOMMIT_HOOKS_VERSION }}"
             echo "new_commits=true" >> $GITHUB_ENV
           fi;
           git push --set-upstream origin update-precommit-hooks-${{ env.PRECOMMIT_HOOKS_VERSION }}
