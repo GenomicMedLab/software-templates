@@ -5,7 +5,7 @@ import os
 
 from pydantic import BaseModel
 
-from {{ cookiecutter.project_slug }}.models import Config, ServiceEnvironment
+from {{ cookiecutter.project_slug }}.models import ServiceEnvironment
 
 
 _logger = logging.getLogger(__name__)
