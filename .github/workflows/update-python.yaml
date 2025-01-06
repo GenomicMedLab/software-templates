@@ -100,24 +100,20 @@ jobs:
         run: |
           sed -i "s/minimum_pre_commit_version: .*/minimum_pre_commit_version: ${{ env.PRECOMMIT_VERSION }}/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
 
-      - name: Create new branch for changes
-        run: |
-          git checkout -b update-precommit-${{ env.PRECOMMIT_VERSION }}
-
       - name: Create new branch, commit, and push changes
         run: |
-          git checkout -b update-ruff-${{ env.RUFF_VERSION }}
+          git checkout -b update-precommit-${{ env.PRECOMMIT_VERSION }}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
-          git commit -m "Update ruff version to ${{ env.RUFF_VERSION }}"
+          git commit -m "Update precommit to ${{ env.PRECOMMIT_VERSION }}"
           if git diff --quiet origin/main..; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
             echo "new_commits=true" >> $GITHUB_ENV
           fi;
-          git push --set-upstream origin update-ruff-${{ env.RUFF_VERSION }}
+          git push --set-upstream origin update-precommit-${{ env.PRECOMMIT_VERSION }}
 
       - name: Create pull request
         if: env.new_commits == 'true'
@@ -154,24 +150,20 @@ jobs:
         run: |
           sed -i "s/rev: .*  # pre-commit-hooks version/rev: ${{ env.PRECOMMIT_HOOKS_VERSION }}  # pre-commit-hooks version/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
 
-      - name: Create new branch for changes
-        run: |
-          git checkout -b update-precommit-hooks-${{ env.PRECOMMIT_HOOKS_VERSION }}
-
       - name: Create new branch, commit, and push changes
         run: |
-          git checkout -b update-ruff-${{ env.RUFF_VERSION }}
+          git checkout -b update-precommit-hooks-${{ env.PRECOMMIT_HOOKS_VERSION }}
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
-          git commit -m "Update ruff version to ${{ env.RUFF_VERSION }}"
+          git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
+          git commit -m "Update pre-commit-hooks version to ${{ env.PRECOMMIT_HOOKS_VERSION }}"
           if git diff --quiet origin/main..; then
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
             echo "new_commits=true" >> $GITHUB_ENV
           fi;
-          git push --set-upstream origin update-ruff-${{ env.RUFF_VERSION }}
+          git push --set-upstream origin update-precommit-hooks-${{ env.PRECOMMIT_HOOKS_VERSION }}
 
       - name: Create pull request
         if: env.new_commits == 'true'
