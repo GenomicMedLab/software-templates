@@ -19,7 +19,3 @@ def cli() -> None:
     Conclude by summarizing additional commands
     """  # noqa: D301
     initialize_logs()
-
-
-# TODO add fastapi serve subcommand
-# once that PR is merged
