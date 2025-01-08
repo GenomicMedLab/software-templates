@@ -25,7 +25,9 @@
     Installation<install>
     Usage<usage>
     API Reference<reference/index>
-{% if cookiecutter.add_cli %}    CLI Reference<cli>{% endif %}
+{%- if cookiecutter.add_cli %}
+    CLI Reference<cli>
+{%- endif %}
     Changelog<changelog>
     Contributing<contributing>
     License<license>
