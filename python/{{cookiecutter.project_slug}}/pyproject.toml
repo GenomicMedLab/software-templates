@@ -113,16 +113,12 @@ select = [
     "ARG",  # https://docs.astral.sh/ruff/rules/#flake8-unused-arguments-arg
     "PTH",  # https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
     "PGH",  # https://docs.astral.sh/ruff/rules/#pygrep-hooks-pgh
-<<<<<<< HEAD
 {%- if cookiecutter.add_fastapi %}
     "FAST",  # https://docs.astral.sh/ruff/rules/#fastapi-fast
 {%- endif %}
-||||||| 3f458e3
-=======
     "PLC",  # https://docs.astral.sh/ruff/rules/#convention-c
     "PLE",  # https://docs.astral.sh/ruff/rules/#error-e_1
     "TRY",  # https://docs.astral.sh/ruff/rules/#tryceratops-try
->>>>>>> main
     "PERF",  # https://docs.astral.sh/ruff/rules/#perflint-perf
     "FURB",  # https://docs.astral.sh/ruff/rules/#refurb-furb
     "RUF",  # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
@@ -141,16 +137,12 @@ fixable = [
     "PT",
     "RSE",
     "SIM",
-<<<<<<< HEAD
 {%- if cookiecutter.add_fastapi %}
     "FAST",
 {%- endif %}
-||||||| 3f458e3
-=======
     "PLC",
     "PLE",
     "TRY",
->>>>>>> main
     "PERF",
     "FURB",
     "RUF"
