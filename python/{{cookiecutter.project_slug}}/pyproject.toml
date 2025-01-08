@@ -18,16 +18,29 @@ classifiers = [
 requires-python = ">=3.11"
 description = "{{ cookiecutter.description }}"
 license = {file = "LICENSE"}
+{%- if cookiecutter.add_fastapi %}
+dependencies = [
+    "fastapi",
+    "pydantic~=2.1",
+]
+{% else %}
 dependencies = []
+{% endif -%}
 dynamic = ["version"]
 
 [project.optional-dependencies]
-tests = ["pytest", "pytest-cov"]
+tests = [
+    "pytest",
+    "pytest-cov",
+{%- if cookiecutter.add_fastapi %}
+    "httpx",
+{%- endif %}
+]
 dev = [
     "pre-commit>=4.0.1",
     "ruff==0.8.6",
 ]
-{% if cookiecutter.add_docs %}
+{%- if cookiecutter.add_docs %}
 docs = [
     "sphinx==6.1.3",
     "sphinx-autodoc-typehints==1.22.0",
@@ -100,6 +113,9 @@ select = [
     "ARG",  # https://docs.astral.sh/ruff/rules/#flake8-unused-arguments-arg
     "PTH",  # https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
     "PGH",  # https://docs.astral.sh/ruff/rules/#pygrep-hooks-pgh
+{%- if cookiecutter.add_fastapi %}
+    "FAST",  # https://docs.astral.sh/ruff/rules/#fastapi-fast
+{%- endif %}
     "PLC",  # https://docs.astral.sh/ruff/rules/#convention-c
     "PLE",  # https://docs.astral.sh/ruff/rules/#error-e_1
     "TRY",  # https://docs.astral.sh/ruff/rules/#tryceratops-try
@@ -121,6 +137,9 @@ fixable = [
     "PT",
     "RSE",
     "SIM",
+{%- if cookiecutter.add_fastapi %}
+    "FAST",
+{%- endif %}
     "PLC",
     "PLE",
     "TRY",
