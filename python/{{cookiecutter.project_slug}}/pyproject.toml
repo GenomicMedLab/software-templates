@@ -18,14 +18,15 @@ classifiers = [
 requires-python = ">=3.11"
 description = "{{ cookiecutter.description }}"
 license = {file = "LICENSE"}
-{%- if cookiecutter.add_fastapi %}
 dependencies = [
+{%- if cookiecutter.add_cli %}
+    "click",
+{%- endif %}
+{%- if cookiecutter.add_fastapi %}
     "fastapi",
     "pydantic~=2.1",
+{%- endif %}
 ]
-{% else %}
-dependencies = []
-{% endif -%}
 dynamic = ["version"]
 
 [project.optional-dependencies]
@@ -48,9 +49,12 @@ docs = [
     "sphinx-copybutton==0.5.2",
     "sphinxext-opengraph==0.8.2",
     "furo==2023.3.27",
-    "sphinx-github-changelog==1.2.1"
+    "sphinx-github-changelog==1.2.1",
+{%- if cookiecutter.add_cli %}
+    "sphinx-click==5.0.1",
+{%- endif %}
 ]
-{% endif %}
+{%- endif %}
 
 [project.urls]
 Homepage = "https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}"
@@ -60,6 +64,9 @@ Source = "https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}"
 "Bug Tracker" = "https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}/issues"
 
 [project.scripts]
+{%- if cookiecutter.add_cli %}
+{{ cookiecutter.project_slug | replace("_", "-") }} = "{{ cookiecutter.project_slug }}.cli:cli"
+{%- endif %}
 
 [build-system]
 requires = ["setuptools>=64", "setuptools_scm>=8"]
@@ -79,7 +86,9 @@ branch = true
 
 [tool.ruff]
 src = ["src"]
-{% if cookiecutter.add_docs %}exclude = ["docs/source/conf.py"]{% endif %}
+{%- if cookiecutter.add_docs %}
+exclude = ["docs/source/conf.py"]
+{%- endif %}
 
 [tool.ruff.lint]
 select = [
