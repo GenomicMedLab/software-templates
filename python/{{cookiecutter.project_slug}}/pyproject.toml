@@ -40,6 +40,9 @@ tests = [
 dev = [
     "pre-commit>=4.2.0",
     "ruff==0.12.1",
+{%- if cookiecutter.add_cli %}
+    "fastapi[standard]"
+{%- endif %}
 ]
 {%- if cookiecutter.add_docs %}
 docs = [
