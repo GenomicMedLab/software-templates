@@ -18,8 +18,7 @@ jobs:
           uv venv && uv pip install -r requirements.txt
 
       - name: Attempt build
-        run: python3 -m cookiecutter --no-input python/
-
+        run: uv run cookiecutter --no-input python/
 
       - name: Attempt installation
         run: uv sync --all-extras
