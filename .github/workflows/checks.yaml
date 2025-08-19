@@ -22,3 +22,4 @@ jobs:
 
       - name: Attempt installation
         run: uv sync --all-extras
+        working-directory: wagner_lab_project/
