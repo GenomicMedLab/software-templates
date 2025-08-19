@@ -17,7 +17,7 @@ classifiers = [
 requires-python = ">=3.11"
 description = "{{ cookiecutter.description }}"
 license = "MIT"
-license_files = ["LICENSE"]
+license-files = ["LICENSE"]
 dependencies = [
 {%- if cookiecutter.add_cli %}
     "click",
