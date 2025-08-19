@@ -10,8 +10,10 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
 
-      - name: Install and activate uv
+      - name: Install uv
         uses: astral-sh/setup-uv@v6
+
+      - name: Activate venv
         run: uv venv
 
       - name: Install dependencies
