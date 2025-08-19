@@ -24,4 +24,4 @@ jobs:
         run: uv sync --all-extras
         working-directory: wagner_lab_project/
         env:
-          SETUPTOOLS_SCM_PRETEND_VERSION: GITHUB_ACTIONS_TEST
+          SETUPTOOLS_SCM_PRETEND_VERSION: 0.0.1
