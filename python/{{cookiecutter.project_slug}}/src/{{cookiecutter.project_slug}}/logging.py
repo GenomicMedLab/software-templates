@@ -3,7 +3,7 @@
 import logging
 
 
-def initialize_logs(log_level: int = logging.DEBUG) -> None:
+def initialize_logs(log_level: int = logging.INFO) -> None:
     """Configure logging.
 
     :param log_level: app log level to set

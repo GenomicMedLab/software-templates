@@ -1,5 +1,6 @@
 """Define API endpoints."""
 
+import logging
 from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
 from enum import Enum
@@ -7,7 +8,7 @@ from enum import Enum
 from fastapi import FastAPI
 
 from {{ cookiecutter.project_slug }} import __version__
-from {{ cookiecutter.project_slug }}.config import config
+from {{ cookiecutter.project_slug }}.config import get_config
 from {{ cookiecutter.project_slug }}.logging import initialize_logs
 from {{ cookiecutter.project_slug }}.models import ServiceInfo, ServiceOrganization, ServiceType
 
@@ -20,7 +21,9 @@ async def lifespan(app: FastAPI) -> AsyncGenerator:  # noqa: ARG001
 
     :param app: FastAPI instance
     """
-    initialize_logs()
+    log_level = logging.DEBUG if get_config().debug else logging.INFO
+
+    initialize_logs(log_level=log_level)
     yield
 
 
@@ -50,7 +53,7 @@ app = FastAPI(
 
 
 @app.get(
-    "/service_info",
+    "/service-info",
     summary="Get basic service information",
     description="Retrieve service metadata, such as versioning and contact info. Structured in conformance with the [GA4GH service info API specification](https://www.ga4gh.org/product/service-info/)",
     tags=[_Tag.META],
@@ -58,5 +61,5 @@ app = FastAPI(
 def service_info() -> ServiceInfo:
     """Provide service info per GA4GH Service Info spec"""
     return ServiceInfo(
-        organization=ServiceOrganization(), type=ServiceType(), environment=config.env
+        organization=ServiceOrganization(), type=ServiceType(), environment=get_config().env
     )
