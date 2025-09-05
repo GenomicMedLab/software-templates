@@ -25,6 +25,8 @@ dependencies = [
 {%- if cookiecutter.add_fastapi %}
     "fastapi",
     "pydantic~=2.1",
+{%- endif %}
+{%- if cookiecutter.add_fastapi or cookiecutter.add_cli %}
     "pydantic-settings",
 {%- endif %}
 ]
