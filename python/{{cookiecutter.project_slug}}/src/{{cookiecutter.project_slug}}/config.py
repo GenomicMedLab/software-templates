@@ -8,7 +8,11 @@ from {{ cookiecutter.project_slug }}.models import ServiceEnvironment
 
 
 class Settings(BaseSettings):
-    """Create app settings"""
+    """Create app settings
+
+    There's no singleton effect here, so every new call to this class will re-compute
+    configuration settings, defaults, etc.
+    """
 
     model_config = SettingsConfigDict(
         env_prefix="{{ cookiecutter.project_slug }}_",
@@ -24,7 +28,9 @@ class Settings(BaseSettings):
 
 @cache
 def get_config() -> Settings:
-    """Get runtime configuration
+    """Get runtime configuration.
+
+    This function is cached, so the config object only gets created/calculated once.
 
     :return: Settings instance
     """
