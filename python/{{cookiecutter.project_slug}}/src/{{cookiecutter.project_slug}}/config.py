@@ -11,7 +11,10 @@ class Settings(BaseSettings):
     """Create app settings"""
 
     model_config = SettingsConfigDict(
-        env_prefix="{{ cookiecutter.project_slug }}_", env_file=".env", env_file_encoding="utf-8", extra="ignore"
+        env_prefix="{{ cookiecutter.project_slug }}_",
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore"
     )
 
     env: ServiceEnvironment = ServiceEnvironment.DEV
