@@ -56,10 +56,7 @@ app = FastAPI(
     tags=[_Tag.META],
 )
 def service_info() -> ServiceInfo:
-    """Provide service info per GA4GH Service Info spec
-
-    :return: conformant service info description
-    """
+    """Provide service info per GA4GH Service Info spec"""
     return ServiceInfo(
         organization=ServiceOrganization(), type=ServiceType(), environment=config.env
     )

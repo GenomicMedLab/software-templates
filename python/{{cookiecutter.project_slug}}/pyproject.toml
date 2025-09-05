@@ -36,6 +36,8 @@ tests = [
     "pytest-cov",
 {%- if cookiecutter.add_fastapi %}
     "httpx",
+    "jsonschema",
+    "pyyaml",
 {%- endif %}
 ]
 dev = [
