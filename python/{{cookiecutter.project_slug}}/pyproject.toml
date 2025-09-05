@@ -25,6 +25,7 @@ dependencies = [
 {%- if cookiecutter.add_fastapi %}
     "fastapi",
     "pydantic~=2.1",
+    "pydantic-settings",
 {%- endif %}
 ]
 dynamic = ["version"]
