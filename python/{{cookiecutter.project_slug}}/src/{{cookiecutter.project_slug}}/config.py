@@ -10,7 +10,7 @@ from {{ cookiecutter.project_slug }}.models import ServiceEnvironment
 class Settings(BaseSettings):
     """Create app settings
 
-    There's no singleton effect here, so every new call to this class will re-compute
+    This is not a singleton, so every new call to this class will re-compute
     configuration settings, defaults, etc.
     """
 
