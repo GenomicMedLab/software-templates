@@ -49,6 +49,7 @@ app = FastAPI(
     docs_url="/docs",
     openapi_url="/openapi.json",
     swagger_ui_parameters={"tryItOutEnabled": True},
+    lifespan=lifespan
 )
 
 
