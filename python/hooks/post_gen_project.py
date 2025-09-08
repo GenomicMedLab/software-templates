@@ -20,4 +20,4 @@ if not {{ cookiecutter.add_fastapi }}:
     Path("src/{{ cookiecutter.project_slug }}/config.py").unlink()
 
 if (not {{ cookiecutter.add_fastapi }}) and (not {{ cookiecutter.add_cli }}):
-    Path("./src/{{ cookiecutter.project_slug }}/logging.py").unlink()
+    Path("./src/{{ cookiecutter.project_slug }}/utils.py").unlink()
