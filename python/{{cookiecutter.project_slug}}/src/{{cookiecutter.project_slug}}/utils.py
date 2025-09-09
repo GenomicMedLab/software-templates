@@ -9,9 +9,6 @@ def initialize_logs(log_level: int = logging.DEBUG) -> None:
 
     :param log_level: app log level to set
     """
-    if log_level not in {10, 20, 30, 40, 50}:
-        msg = f"Unrecognized log level: {log_level}"
-        raise ValueError(msg)
     root = logging.getLogger()
     if root.handlers:
         return
