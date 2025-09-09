@@ -15,9 +15,10 @@ if not {{ cookiecutter.add_cli }}:
 
 if not {{ cookiecutter.add_fastapi }}:
     Path("tests/test_api.py").unlink()
+    Path("tests/data/service_info_openapi.yaml").unlink()
     Path("src/{{ cookiecutter.project_slug }}/api.py").unlink()
     Path("src/{{ cookiecutter.project_slug }}/models.py").unlink()
-    Path("src/{{ cookiecutter.project_slug }}/config.py").unlink()
 
 if (not {{ cookiecutter.add_fastapi }}) and (not {{ cookiecutter.add_cli }}):
     Path("./src/{{ cookiecutter.project_slug }}/logging.py").unlink()
+    Path("src/{{ cookiecutter.project_slug }}/config.py").unlink()
