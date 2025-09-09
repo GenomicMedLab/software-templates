@@ -53,6 +53,6 @@ class ServiceInfo(BaseModel):
         "https://github.com/{{ cookiecutter.org }}/{{ cookiecutter.repo }}"
     )
     createdAt: Literal["{% now 'utc', '%Y-%m-%dT%H:%M:%S+00:00' %}"] = "{% now 'utc', '%Y-%m-%dT%H:%M:%S+00:00' %}"  # noqa: N815
-    updatedAt: str | None = None  # noqa: N815
+    updatedAt: Literal["{% now 'utc', '%Y-%m-%dT%H:%M:%S+00:00' %}"] = "{% now 'utc', '%Y-%m-%dT%H:%M:%S+00:00' %}"  # noqa: N815
     environment: ServiceEnvironment
     version: Literal[__version__] = __version__
