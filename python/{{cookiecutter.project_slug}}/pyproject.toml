@@ -26,6 +26,9 @@ dependencies = [
     "fastapi",
     "pydantic~=2.1",
 {%- endif %}
+{%- if cookiecutter.add_fastapi or cookiecutter.add_cli %}
+    "pydantic-settings",
+{%- endif %}
 ]
 dynamic = ["version"]
 
@@ -35,6 +38,8 @@ tests = [
     "pytest-cov",
 {%- if cookiecutter.add_fastapi %}
     "httpx",
+    "jsonschema~=4.24",  # pin to avoid deprecation of ref resolver
+    "pyyaml",
 {%- endif %}
 ]
 dev = [

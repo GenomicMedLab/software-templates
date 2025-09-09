@@ -1,8 +1,11 @@
 """Provide CLI for application."""
 
+import logging
+
 import click
 
 from {{ cookiecutter.project_slug }} import __version__
+from {{ cookiecutter.project_slug }}.config import get_config
 from {{ cookiecutter.project_slug }}.logging import initialize_logs
 
 
@@ -18,4 +21,5 @@ def cli() -> None:
 
     Conclude by summarizing additional commands
     """  # noqa: D301
-    initialize_logs()
+    log_level = logging.DEBUG if get_config().debug else logging.INFO
+    initialize_logs(log_level)
