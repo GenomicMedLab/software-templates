@@ -71,7 +71,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   update_precommit_and_hooks:
-    name: Update Python pre-commit version pins and hooks
+    name: Update Python prek version pins and hooks
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -84,19 +84,19 @@ jobs:
         with:
           python-version: ${{ env.MIN_PYTHON_VERSION }}
 
-      - name: Install latest pre-commit
-        run: python3 -m pip install pre-commit
+      - name: Install latest prek
+        run: python3 -m pip install prek
 
-      - name: Get latest pre-commit version
-        id: precommit-version
+      - name: Get latest prek version
+        id: prek-version
         run: |
-          echo "PRECOMMIT_VERSION=$(pip show pre-commit | grep 'Version' | cut -d ' ' -f 2)" >> $GITHUB_ENV
+          echo "PRECOMMIT_VERSION=$(pip show prek | grep 'Version' | cut -d ' ' -f 2)" >> $GITHUB_ENV
 
-      - name: Update pre-commit version in pyproject.toml
+      - name: Update prek version in pyproject.toml
         run: |
-          sed -i "s/\"pre-commit>=.*\"/\"pre-commit>=${{ env.PRECOMMIT_VERSION }}\"/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml
+          sed -i "s/\"prek>=.*\"/\"prek>=${{ env.PRECOMMIT_VERSION }}\"/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml
 
-      - name: Update min pre-commit version requirement in .pre-commit-config.yaml
+      - name: Update min prek version requirement in .pre-commit-config.yaml
         run: |
           sed -i "s/minimum_pre_commit_version: .*/minimum_pre_commit_version: ${{ env.PRECOMMIT_VERSION }}/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
 
@@ -119,7 +119,7 @@ jobs:
         if: env.new_commits == 'true'
         run: |
           gh pr create --title "cicd(python): update precommit to ${{ env.PRECOMMIT_VERSION }}" \
-                       --body "Automatically update the pre-commit version in \`pyproject.toml\` and \`.pre-commit-config.yaml\`." \
+                       --body "Automatically update the prek version in \`pyproject.toml\` and \`.pre-commit-config.yaml\`." \
                        --base main \
                        --head update-precommit-${{ env.PRECOMMIT_VERSION }} \
                        --reviewer "jsstevenson,korikuzma" \
