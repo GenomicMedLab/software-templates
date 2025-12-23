@@ -1,12 +1,13 @@
 {
-    "project_name": "Wagner Lab project",
-    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
-    "description": "Short project description",
-    "org": "genomicmedlab",
-    "repo": "{{ cookiecutter.project_slug }}",
-    "your_name": "",
-    "your_email": "",
-    "add_docs": [false, true],
-    "add_cli": [false, true],
-    "add_fastapi": [false, true]
+  "project_name": "Wagner Lab project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "description": "Short project description",
+  "org": "genomicmedlab",
+  "repo": "{{ cookiecutter.project_slug }}",
+  "your_name": "",
+  "your_email": "",
+  "codeowners": "GenomicMedLab/wagner-lab-developers",
+  "add_docs": [false, true],
+  "add_cli": [false, true],
+  "add_fastapi": [false, true]
 }
