@@ -22,21 +22,22 @@ Then initialize a virtual environment: ::
     source venv/bin/activate
     python3 -m pip install -e '.[dev,tests,docs]'
 
-We use `pre-commit <https://pre-commit.com/#usage>`_ to run conformance tests before commits. This provides checks for:
+We use `prek <https://prek.j178.dev/>`_ to run conformance tests before commits. This provides checks for:
 
 * Code format and style
 * Added large files
 * AWS credentials
 * Private keys
+* Other formatting things
 
 Before your first commit, run: ::
 
-    pre-commit install
+    prek install
 
 Style
 -----
 
-Code style is managed by `Ruff <https://github.com/astral-sh/ruff>`_, and should be checked via pre-commit hook before commits. Final QC is applied with GitHub Actions to every pull request.
+Code style is managed by `Ruff <https://github.com/astral-sh/ruff>`_, and should be checked via ``prek`` hook before commits. Final QC is applied with GitHub Actions to every pull request.
 
 Tests
 -----
