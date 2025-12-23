@@ -1,0 +1,1 @@
+{% if cookiecutter.codeowners != "" %}* @{{ cookiecutter.codeowners }}{% endif %}
