@@ -21,12 +21,6 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: Expected behavior
-      description: What did you expect to happen?
-    validations:
-      required: true
-  - type: textarea
-    attributes:
       label: Acceptance Criteria
       description: |
         Provide the criteria that must be met in order for this issue to be considered fixed.
