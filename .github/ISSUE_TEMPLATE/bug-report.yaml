@@ -5,13 +5,15 @@ body:
   - type: textarea
     attributes:
       label: Describe the bug
-      description: Provide a clear and concise description of what the bug is.
+      description: Provide a clear and concise description of what the bug is. Include screenshots if applicable.
     validations:
       required: true
   - type: textarea
     attributes:
       label: Steps to reproduce
-      description: Provide detailed steps to replicate the bug. Make sure to describe the current behavior. If applicable, include full errors, stack traces, and/or relevant logs.
+      description: | 
+        Provide detailed steps to replicate the bug. Make sure to describe the current behavior. 
+        If applicable, include full errors, stack traces, and/or relevant logs. 
       placeholder: |
         1. In this environment...
         2. With this config...
@@ -41,16 +43,15 @@ body:
       required: false
   - type: textarea
     attributes:
-      label: Branch, commit, and/or version
-      description: Provide the branch, commit, and/or version you're using.
+      label: Environment & Version
+      description: |
+        Provide the branch, commit, and/or version you're using, along with environment details
+        (e.g., OS name and version, browser, runtime, deployment environment).
       placeholder: |
-        branch: issue-1
-        commit: abc123d
-    validations:
-      required: true
-  - type: textarea
-    attributes:
-      label: Environment details
-      description: Provide environment details (OS name and version, etc).
-    validations:
-      required: true
+        branch:
+        commit:
+        version:
+        environment:
+      validations:
+        required: false
+

@@ -5,7 +5,9 @@ body:
   - type: textarea
     attributes:
       label: Feature description
-      description: Provide a clear and concise description of what you want to happen.
+      description: | 
+        Provide a clear and concise description of what you want to happen.
+        Include screenshots, wireframes, mockups, diagrams, or other supporting artifacts if available.
     validations:
       required: true
   - type: textarea
@@ -32,7 +34,7 @@ body:
   - type: textarea
     attributes:
       label: Proposed solution
-      description: Provide proposed solution and any technical details on how the feature might be implemented.
+      description: Describe a possible solution or any technical considerations, if known.
     validations:
       required: false
   - type: textarea
