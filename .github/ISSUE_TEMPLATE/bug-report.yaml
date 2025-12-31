@@ -55,5 +55,5 @@ body:
         deployment environment (dev, prod, staging, local):
         operating system (Mac, Windows, Linux, other):
       validations:
-        required: false
+        required: true
 
