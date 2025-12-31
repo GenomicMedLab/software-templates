@@ -38,7 +38,7 @@ body:
   - type: textarea
     attributes:
       label: Possible reason(s)/Suggested Fix
-      description: Provide any insights into what might be causing the issue or how to resolve it.
+      description: Provide any insights into what might be causing the issue and/or how to resolve it.
     validations:
       required: false
   - type: textarea
