@@ -51,7 +51,9 @@ body:
         branch:
         commit:
         version:
-        environment:
+        browser (if applicable - Chrome, Firefox, Safari, etc.):
+        deployment environment (dev, prod, staging, local):
+        operating system (Mac, Windows, Linux, other):
       validations:
         required: false
 
