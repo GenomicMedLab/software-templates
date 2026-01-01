@@ -43,7 +43,7 @@ tests = [
 {%- endif %}
 ]
 dev = [
-    "prek>=0.2.23",
+    "prek>=0.2.25",
     "ruff==0.14.10",
 {%- if cookiecutter.add_fastapi %}
     "fastapi[standard]"
