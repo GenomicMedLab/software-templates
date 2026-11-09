@@ -18,12 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ env.MIN_PYTHON_VERSION }}
 
@@ -70,17 +70,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  update_precommit_and_hooks:
+  update_prek_and_hooks:
     name: Update Python prek version pins and hooks
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ env.MIN_PYTHON_VERSION }}
 
@@ -90,15 +90,15 @@ jobs:
       - name: Get latest prek version
         id: prek-version
         run: |
-          echo "PRECOMMIT_VERSION=$(pip show prek | grep 'Version' | cut -d ' ' -f 2)" >> $GITHUB_ENV
+          echo "PREK_VERSION=$(pip show prek | grep 'Version' | cut -d ' ' -f 2)" >> $GITHUB_ENV
 
       - name: Update prek version in pyproject.toml
         run: |
-          sed -i "s/\"prek>=.*\"/\"prek>=${{ env.PRECOMMIT_VERSION }}\"/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml
+          sed -i "s/\"prek>=.*\"/\"prek>=${{ env.PREK_VERSION }}\"/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml
 
       - name: Update min prek version requirement in .pre-commit-config.yaml
         run: |
-          sed -i "s/minimum_pre_commit_version: .*/minimum_pre_commit_version: ${{ env.PRECOMMIT_VERSION }}/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
+          sed -i "s/minimum_pre_commit_version: .*/minimum_pre_commit_version: ${{ env.PREK_VERSION }}/" ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
 
       - name: Create new branch, commit, and push changes
         run: |
@@ -108,20 +108,20 @@ jobs:
             echo "new_commits=false" >> $GITHUB_ENV
             exit 0
           else
-            git checkout -b update-precommit-${{ env.PRECOMMIT_VERSION }}
+            git checkout -b update-prek-${{ env.PREK_VERSION }}
             git add ${{ env.PYTHON_TEMPLATE_LOCATION }}/pyproject.toml ${{ env.PYTHON_TEMPLATE_LOCATION }}/.pre-commit-config.yaml
-            git commit -m "Update precommit to ${{ env.PRECOMMIT_VERSION }}"
+            git commit -m "Update prek to ${{ env.PREK_VERSION }}"
             echo "new_commits=true" >> $GITHUB_ENV
           fi;
-          git push --set-upstream origin update-precommit-${{ env.PRECOMMIT_VERSION }}
+          git push --set-upstream origin update-prek-${{ env.PREK_VERSION }}
 
       - name: Create pull request
         if: env.new_commits == 'true'
         run: |
-          gh pr create --title "cicd(python): update precommit to ${{ env.PRECOMMIT_VERSION }}" \
+          gh pr create --title "cicd(python): update prek to ${{ env.PREK_VERSION }}" \
                        --body "Automatically update the prek version in \`pyproject.toml\` and \`.pre-commit-config.yaml\`." \
                        --base main \
-                       --head update-precommit-${{ env.PRECOMMIT_VERSION }} \
+                       --head update-prek-${{ env.PREK_VERSION }} \
                        --reviewer "jsstevenson,korikuzma" \
                        --label "priority:low"
         env:
@@ -132,12 +132,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ env.MIN_PYTHON_VERSION }}
 
